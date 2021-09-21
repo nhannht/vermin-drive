@@ -11,10 +11,7 @@ public class AuthController {
         return "login";
     }
 
-    @GetMapping("/")
-    public String redirectToLogin() {
-        return "redirect:/login";
-    }
+   
 
     @GetMapping("/login-error")
     public String loginErrorView(Model model) {
