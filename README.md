@@ -1,4 +1,4 @@
-![Heroku](https://heroku-badge.herokuapp.com/?app=pure-refuge-26467)
+![Heroku](https://pyheroku-badge.herokuapp.com/?app=pure-refuge-26467)
 
 
 
