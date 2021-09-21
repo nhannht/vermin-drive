@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{jquery-3.6.0.js}"></script>
+    <title>Home</title>
+</head>
+<body class="p-3 mb-2 bg-light text-black">
+<div class="container">
+    <span name="_csrf" type="hidden" th:value="${_csrf.token}"></span>
+    <div id="logoutDiv">
+        <form action="#" th:action="@{/logout}" method="POST">
+            <button type="submit" class="btn btn-secondary float-right">Logout</button>
+        </form>
+    </div>
+    <div id="contentDiv" style="clear: right;">
+        <form id="files-form" th:action="@{/files}" action="#" th:method="POST" enctype="multipart/form-data">
+            <div class="container">
+                <div class="row" style="margin: 1em;">
+                    <div class="col-sm-2">
+                        <label for="fileUpload">Upload a New File:</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="file" class="form-control-file" id="fileUpload" name="file">
+                    </div>
+                    <div class="col-sm-4">
+                        <button id="upload-file" type="submit" class="btn btn-dark">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table table-striped" id="fileTable">
+                <thead>
+                <tr>
+                    <th style="width: 20%" scope="col"></th>
+                    <th style="width: 80%" scope="col">File Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${files.empty}">
+                    <td style="text-align:center;" colspan="2">No files available.</td>
+                </tr>
+                <tr th:each="file : ${files}">
+                    <td>
+                        <a target="_blank" th:href="@{'/files/' + ${file.id}}" class="btn btn-success">View</a>
+                        <a class="btn btn-danger" th:onclick="deleteFile( [[${file.id}]] )">Delete</a>
+                    </td>
+                    <th scope="row"><span th:text="${file.name}">Name</span></th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{file.js}"></script>
+</body>
+</html>
