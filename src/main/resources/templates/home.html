@@ -9,7 +9,7 @@
 </head>
 <body class="p-3 mb-2 bg-light text-black">
 <div class="container">
-    <span name="_csrf" type="hidden" th:value="${_csrf.token}"></span>
+<!--    <span name="_csrf" type="hidden" th:value="${_csrf.token}"></span>-->
     <div id="logoutDiv">
         <form action="#" th:action="@{/logout}" method="POST">
             <button type="submit" class="btn btn-secondary float-right">Logout</button>
